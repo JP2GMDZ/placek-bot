@@ -1,0 +1,18 @@
+{
+  "name": "placek-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iThomash",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "discord.js": "^14.0.2",
+    "dotenv": "^16.0.1",
+    "env": "^0.0.2",
+    "fs": "^0.0.1-security"
+  }
+}
