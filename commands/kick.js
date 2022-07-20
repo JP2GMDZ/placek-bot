@@ -4,7 +4,6 @@ const settings = require("../settings.json");
 const { PermissionFlagsBits } = require("discord-api-types/v10");
 module.exports = {
     name: "kick",
-    aliases: [],
     description: "Wyrzucenie użytkonwika",
     usage: "Oznaczenie",
     data: function () {
@@ -17,7 +16,7 @@ module.exports = {
     },
     execute: async (interaction, client) => {
         let userMention = interaction.options.get("użytkownik").value;
-        interaction.reply({embeds: [new Discord.EmbedBuilder().setTitle("Wyrzucono użytkownika").setColor("Blurple").setDescription(`Wyrzucono użytkownika ${userMention}`)]})
+        interaction.reply({embeds: [new Discord.EmbedBuilder().setTitle("Wyrzucono użytkownika").setColor("Blurple").setDescription(`Wyrzucono użytkownika <@${userMention}>`)], ephemeral: true })
         client.guilds.cache.get(settings.guildId).members.cache.get(userMention).kick();
         return;
     }
