@@ -21,7 +21,7 @@ module.exports = {
         let title = interaction.options.getString("tytuł");
         let desc = interaction.options.getString("opis");
         client.channels.cache.get(interaction.channelId).send({ embeds: [new Discord.EmbedBuilder().setTitle(title).setColor("Blurple").setDescription(desc)] });
-        interaction.reply({content: "Pomyślnie wysałno embeda", ephemeral: true});
+        interaction.reply({content: "Pomyślnie wysłano embeda", ephemeral: true});
         return;
     }
 }
