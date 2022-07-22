@@ -5,7 +5,6 @@ const { PermissionFlagsBits } = require("discord-api-types/v10");
 module.exports = {
     name: "mute",
     description: "Wyciszenie użytkownika",
-    usage: "Oznaczenie",
     data: function () {
         return new SlashCommandBuilder()
             .setName(this.name)
@@ -25,7 +24,7 @@ module.exports = {
                 ))
             .addStringOption(option=>
                 option.setName("powód").setDescription("Powód wyciszenia").setRequired(false))    
-            .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+            .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
     },
     execute: async (interaction, client) => {
         let member = interaction.options.getMember("użytkownik");

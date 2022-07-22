@@ -11,7 +11,8 @@ const client = new Client({
     intents: [
        GatewayIntentBits.MessageContent,
        GatewayIntentBits.GuildMessages,
-       GatewayIntentBits.Guilds
+       GatewayIntentBits.Guilds,
+       GatewayIntentBits.GuildMembers
     ],
     partials: [Partials.Channel, Partials.User]
 });
@@ -49,6 +50,22 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
         console.error(error);
     }
 })();
+
+client.on("guildMemberAdd", (member)=>{
+    const embed = new Discord.EmbedBuilder()
+        .setTitle("Dołączył nowy użytkownik!")
+        .setDescription(`**${member.user.username}#${member.user.discriminator}** dołączył do serwera, aktualnie na serwerze jest **${client.guilds.cache.get(settings.guildId).memberCount}** użytkowników!`)
+        .setColor("Blurple");
+    client.channels.cache.get(settings.welcomeChannel).send({ embeds: [embed] });
+})
+
+client.on("guildMemberRemove", (member)=>{
+    const embed = new Discord.EmbedBuilder()
+        .setTitle("Opuścił nas użytkownik!")
+        .setDescription(`**${member.user.username}#${member.user.discriminator}** opuścił nasz serwer, aktualnie na serwerze jest **${client.guilds.cache.get(settings.guildId).memberCount}** użytkowników!`)
+        .setColor("Blurple");
+    client.channels.cache.get(settings.welcomeChannel).send({ embeds: [embed] });
+})
 
 client.on('interactionCreate', async interaction => {
     if (interaction.type!==InteractionType.ApplicationCommand) return;
