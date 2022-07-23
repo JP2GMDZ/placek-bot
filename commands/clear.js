@@ -1,12 +1,10 @@
 const Discord = require("discord.js");
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const settings = require("../settings.json");
 const { PermissionFlagsBits } = require("discord-api-types/v10");
 module.exports = {
     name: "clear",
     aliases: [],
     description: "Czyszczenie czatu",
-    usage: "ilośc wiadomości",
     data:  function() {return new SlashCommandBuilder()
         .setName(this.name)
         .setDescription(this.description)
